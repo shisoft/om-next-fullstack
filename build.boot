@@ -5,7 +5,7 @@
                    :exclusions [com.cognitect/transit-cljs]]
                   [bidi                        "2.0.11"
                    :exclusions [ring/ring-core prismatic/schema]]
-                  [org.clojure/clojure         "1.9.0-alpha13"]
+                  [org.clojure/clojure         "1.9.0-alpha20"]
                   [org.clojure/clojurescript   "1.9.229"
                    :exclusions [org.clojure/clojure]]
                   [kibu/pushy "0.3.6"
@@ -47,7 +47,8 @@
                   [org.clojure/tools.nrepl     "0.2.12"         :scope "test"
                    :exclusions [org.clojure/clojure]]
                   [weasel                      "0.7.0"          :scope "test"
-                   :exclusions [org.clojure/clojure org.clojure/clojurescript]]])
+                   :exclusions [org.clojure/clojure org.clojure/clojurescript]]
+                  [onetom/boot-lein-generate "0.1.3" :scope "test"]])
 
 (load-data-readers!)
 
@@ -57,7 +58,10 @@
  '[adzerk.boot-reload    :refer [reload]]
  '[system.boot :refer [system run]]
  '[environ.boot :refer [environ]]
- '[todomvc.system :refer [dev-system]])
+ '[todomvc.system :refer [dev-system]]
+ '[boot.lein])
+
+(deftask lein [] (boot.lein/generate))
 
 (deftask deps [])
 
