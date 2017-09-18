@@ -49,7 +49,9 @@
     ESCAPE_KEY
     (set! (.. e -target -value) "")
     ENTER_KEY
-    (om/transact! c `[(todos/create {:todo/title ~(.. e -target -value)})])
+    (om/transact!
+      c `[(todos/create {:todo/title ~(.. e -target -value)})
+          :todos/list])
     nil))
 
 (defui Todos

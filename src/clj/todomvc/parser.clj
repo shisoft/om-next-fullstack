@@ -46,7 +46,7 @@
   {:value {:error (str "No handler for mutation key " k)}})
 
 (defmethod mutatef 'todos/create
-  [{:keys [conn]} k {:keys [:todo/title]}]
+  [{:keys [conn state] :as s} k {:keys [:todo/title]}]
   {:value {:keys [:todos/list]}
    :action
    (fn []
