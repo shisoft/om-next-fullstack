@@ -4,6 +4,9 @@
             #?@(:clj [[todomvc.parser :as server-parser]]))
   #?(:cljs (:import [goog.net XhrIo])))
 
+(def ESCAPE_KEY 27)
+(def ENTER_KEY 13)
+
 (defn hidden [is-hidden]
   (if is-hidden
     #js {:display "none"}

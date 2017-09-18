@@ -3,7 +3,7 @@
                        [goog.dom :as gdom]])
             [om.next :as om :refer [defui]]
             [om.dom :as dom]
-            [todomvc.util :as util :refer [hidden pluralize]]
+            [todomvc.util :as util :refer [hidden pluralize ESCAPE_KEY ENTER_KEY]]
             [todomvc.item :as item]
             [todomvc.client-parser :as p])
   #?(:cljs (:import [goog History]
@@ -46,9 +46,9 @@
 
 (defn new-todo-keydown [c {:keys [todo/title] :as props} e]
   (condp == (.-keyCode e)
-    27
+    ESCAPE_KEY
     (set! (.. e -target -value) "")
-    13
+    ENTER_KEY
     (om/transact! c `[(todos/create {:todo/title ~(.. e -target -value)})])
     nil))
 

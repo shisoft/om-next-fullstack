@@ -1,11 +1,8 @@
 (ns todomvc.item
   (:require [om.next :as om :refer [defui]]
             [om.dom :as dom]
-            [todomvc.util :as util :refer [hidden pluralize]]
+            [todomvc.util :as util :refer [hidden pluralize ESCAPE_KEY ENTER_KEY]]
             [clojure.string :as string]))
-
-(def ESCAPE_KEY 27)
-(def ENTER_KEY 13)
 
 (defn submit [c {:keys [db/id todo/title] :as props} e]
   (let [edit-text (string/trim (or (om/get-state c :edit-text) ""))]
