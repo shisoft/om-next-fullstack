@@ -44,6 +44,14 @@
         [["" "All"] ["active" "Active"] ["completed" "Completed"]]))
     (clear-button todos completed)))
 
+(defn new-todo-keydown [c {:keys [todo/title] :as props} e]
+  (condp == (.-keyCode e)
+    27
+    (set! (.. e -target -value) "")
+    13
+    (om/transact! c `[(todos/create {:todo/title ~(.. e -target -value)})])
+    nil))
+
 (defui Todos
   static om/IQueryParams
   (params [this]
@@ -66,7 +74,7 @@
             #js {:ref "newField"
                  :id "new-todo"
                  :placeholder "What needs to be done?"
-                 :onKeyDown #(do %)})
+                 :onKeyDown (partial new-todo-keydown this props)})
           (main this props)
           (footer this props active completed))))))
 
