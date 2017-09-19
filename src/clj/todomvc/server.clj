@@ -15,11 +15,7 @@
             [todomvc.page :as page]
             [om.next.server :as om]
             [todomvc.parser :as parser]
-            [system.repl :refer [system]]
-
-            [taoensso.sente :as sente]
-            [taoensso.sente.server-adapters.http-kit :refer [sente-web-server-adapter]]
-            [clojure.core.async :as async]))
+            [system.repl :refer [system]]))
 
 ;; =============================================================================
 ;; Routes
