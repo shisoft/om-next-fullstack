@@ -15,7 +15,11 @@
             [todomvc.page :as page]
             [om.next.server :as om]
             [todomvc.parser :as parser]
-            [system.repl :refer [system]]))
+            [system.repl :refer [system]]
+
+            [taoensso.sente :as sente]
+            [taoensso.sente.server-adapters.http-kit :refer [sente-web-server-adapter]]
+            [clojure.core.async :as async]))
 
 ;; =============================================================================
 ;; Routes
@@ -24,7 +28,9 @@
   ["" {"/" :index
        "/api"
         {:get  {[""] :api}
-         :post {[""] :api}}}])
+         :post {[""] :api}}
+       "/socket"
+       {:get {[""] :socket}}}])
 
 ;; =============================================================================
 ;; Handlers
