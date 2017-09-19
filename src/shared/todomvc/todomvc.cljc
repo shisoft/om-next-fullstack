@@ -50,8 +50,7 @@
     (set! (.. e -target -value) "")
     ENTER_KEY
     (om/transact!
-      c `[(todos/create {:todo/title ~(.. e -target -value)})
-          :todos/list])
+      c `[(todos/create {:todo/title ~(.. e -target -value)})])
     nil))
 
 (defui Todos
