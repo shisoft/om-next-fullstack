@@ -8,11 +8,7 @@
 (defmulti read om/dispatch)
 
 (defmethod read :default
-  [{:keys [state]} k _]
-  (let [st @state] ;; CACHING!!!
-    (if (contains? st k)
-      {:value (get st k)}
-      {:remote true})))
+  [_ _  _] {:remote true})
 
 ;; work around for a bizarre :simple/:advanced bug
 ;; circle back - David
