@@ -69,7 +69,7 @@
    :action ;; OPTIMISTIC UPDATE
            (fn []
              (swap! state update-in ref merge new-props))
-   })
+   :value (get-todos state)})
 
 (defmethod mutate 'todo/edit
   [{:keys [state]} _ {:keys [db/id]}]

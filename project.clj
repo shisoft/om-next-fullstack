@@ -83,8 +83,6 @@
     "test"
     :exclusions
     [org.clojure/clojure org.clojure/clojurescript]]
-   [com.taoensso/sente "1.11.0"]
-   [org.clojure/core.async "0.2.395"]
    [onetom/boot-lein-generate "0.1.3" :scope "test"]]
   :source-paths
   ["src/shared" "src/clj"]
