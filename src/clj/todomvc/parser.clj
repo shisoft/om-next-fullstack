@@ -34,7 +34,7 @@
 
 (defmethod readf :todos/list
   [{:keys [conn query]} _ params]
-  {:value (todos (d/db conn) query params)})
+  {:value (todos @(d/sync conn) query params)})
 
 ;; =============================================================================
 ;; Mutations
